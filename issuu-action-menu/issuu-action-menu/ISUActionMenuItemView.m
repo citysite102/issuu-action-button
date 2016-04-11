@@ -22,10 +22,10 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        [self setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.backgroundColor = [UIColor colorWithRed:229.0 green:104.0 blue:92.0 alpha:1.0];
         self.iconView = [[UIImageView alloc] initWithFrame:CGRectZero];
         self.iconView.tintColor = [UIColor whiteColor];
+        self.iconView.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:self.iconView];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self.iconView
                                                          attribute:NSLayoutAttributeCenterX
@@ -135,7 +135,6 @@
 }
 
 - (CGFloat)progress {
-    
     [self.indicatorPath removeAllAnimations];
     return self.indicatorPath.strokeEnd;
 }

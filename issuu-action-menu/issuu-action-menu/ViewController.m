@@ -28,7 +28,7 @@
                              initWithTarget:self
                              action:@selector(handleActionMenuGesture:)];
     self.longPressGesture.items = @[[ISUActionMenuItem itemWithImage:[UIImage imageNamed:@"icon_move"] text:@"Move"],
-                                    [ISUActionMenuItem itemWithImage:[UIImage imageNamed:@"icon_duplicateBlock"] text:@"Duplicate"]];
+                                    [ISUActionMenuItem itemWithImage:[UIImage imageNamed:@"icon_duplicate"] text:@"Duplicate"]];
     
     [self.view addGestureRecognizer:self.longPressGesture];
     

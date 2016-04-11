@@ -22,6 +22,7 @@ ISUActionMenuInterface
 @property (nonatomic, readwrite) CGFloat radius;
 @property (nonatomic, readwrite) CGFloat minimumAcceptProgress;
 @property (nonatomic, readwrite) CGRect  centerDegreeReferenceFrame;
+@property (nonatomic, strong) CAShapeLayer *indicatorPath;
 @property (nonatomic, readwrite) BOOL autoAdjustCenterDegree;
 
 //@property (nonatomic, weak) id<TCActionMenuViewDelegate> delegate;
