@@ -31,7 +31,7 @@
         // Define default center degree.
         self.centerDegree = 90;
         // Define circle radius.
-        self.radius = 80.0;
+        self.radius = 90.0;
         self.lastFocusedCellIndex = -1;
         self.minimumAcceptProgress = 0.8;
         
@@ -72,11 +72,17 @@
         
         
         self.indicatorPath = [[CAShapeLayer alloc] init];
-        self.indicatorPath.path        = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(-30, -30, 60, 60)].CGPath;
-        self.indicatorPath.strokeColor = [UIColor whiteColor].CGColor;
+        self.indicatorPath.path        = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(-40, -40, 80, 80)].CGPath;
+        self.indicatorPath.strokeColor = [UIColor colorWithRed:229.0f/255.0f green:104.0f/255.0f blue:92.0f/255.0f alpha:1.0].CGColor;
         self.indicatorPath.fillColor   = [UIColor clearColor].CGColor;
-        self.indicatorPath.lineWidth   = 3.0;
+        self.indicatorPath.lineWidth   = 6.0;
         self.indicatorPath.strokeEnd   = 0.0;
+        self.indicatorPath.anchorPoint = (CGPoint){0.5, 0.5};
+        self.indicatorPath.transform = CATransform3DRotate(self.indicatorPath.transform,
+                                                            -M_PI_2,
+                                                           0.0,
+                                                           0.0,
+                                                           1.0);
         [self.layer addSublayer:self.indicatorPath];
         
     }
@@ -155,9 +161,10 @@
         CABasicAnimation *indicatorSizeAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
         indicatorSizeAnimation.fromValue = @1;
         indicatorSizeAnimation.toValue = @0.8;
-        indicatorSizeAnimation.duration = 0.2;
+        indicatorSizeAnimation.duration = 0.6;
         indicatorSizeAnimation.removedOnCompletion = NO;
         indicatorSizeAnimation.fillMode = kCAFillModeForwards;
+        indicatorSizeAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault];
         [self.indicatorPath addAnimation:indicatorSizeAnimation forKey:nil];
     }];
     

@@ -23,7 +23,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.translatesAutoresizingMaskIntoConstraints = NO;
-    self.view.backgroundColor = [UIColor blueColor];
     self.longPressGesture = [[ISUActionMenuGestureRecognizer alloc]
                              initWithTarget:self
                              action:@selector(handleActionMenuGesture:)];
