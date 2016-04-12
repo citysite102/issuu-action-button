@@ -27,7 +27,7 @@
         self.autoAdjustCenterDegree = YES;
         self.centerDegreeReferenceFrame = [UIScreen mainScreen].bounds;
         // Define self intersectionDegree between item.
-        self.intersectionDegree = 72.0;
+        self.intersectionDegree = 60.0;
         // Define default center degree.
         self.centerDegree = 90;
         // Define circle radius.
@@ -137,24 +137,21 @@
         }
     }];
     
-    [UIView animateWithDuration:0.65 delay:0
-         usingSpringWithDamping:0.6
-          initialSpringVelocity:0.5
-                        options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^{
-         for (int i =0; i <self.itemViews.count; i++) {
-             [self updateCellAtIndex:i withProgress:0];
-         }
-     } completion:^(BOOL finished) {
-         if (completionHandler) {
-             completionHandler(self);
-         }
-     }];
     
-//    [CATransaction begin];
-//    [CATransaction setValue:@(0.1) forKey:kCATransactionAnimationDuration];
-//    self.indicatorPath.strokeEnd = MAX(0.0, MIN(1.0, progress));
-//    [CATransaction commit];
+    for (NSUInteger i = self.itemViews.count - 1 ; i != NSUIntegerMax ; i--) {
+        [UIView animateWithDuration:0.5
+                              delay: -(i - self.itemViews.count) * 0.1
+                            options:UIViewAnimationOptionBeginFromCurrentState
+                         animations:^{
+                             [self updateCellAtIndex:i withProgress:0];
+                         } completion:^(BOOL finished) {
+                             if (i == self.itemViews.count - 1) {
+                                 if (completionHandler) {
+                                     completionHandler(self);
+                                 }
+                             }
+                         }];
+    }
     
     [CATransaction begin];
     [CATransaction setCompletionBlock:^{

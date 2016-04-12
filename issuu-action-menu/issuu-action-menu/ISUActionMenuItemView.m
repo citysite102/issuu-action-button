@@ -22,7 +22,63 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor colorWithRed:229.0 green:104.0 blue:92.0 alpha:1.0];
+        
+        // Background
+//        self.backgroundView = [[UIImageView alloc] initWithFrame:CGRectZero];
+//        self.backgroundView.image = [UIImage imageNamed:@"button_action_menu"];
+//        self.backgroundView.translatesAutoresizingMaskIntoConstraints = NO;
+//        [self addSubview:self.backgroundView];
+//        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.backgroundView
+//                                                         attribute:NSLayoutAttributeCenterX
+//                                                         relatedBy:NSLayoutRelationEqual
+//                                                            toItem:self
+//                                                         attribute:NSLayoutAttributeCenterX
+//                                                        multiplier:1.0f
+//                                                          constant:0.0f]];
+//        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.backgroundView
+//                                                         attribute:NSLayoutAttributeCenterY
+//                                                         relatedBy:NSLayoutRelationEqual
+//                                                            toItem:self
+//                                                         attribute:NSLayoutAttributeCenterY
+//                                                        multiplier:1.0f
+//                                                          constant:0.0f]];
+        
+        self.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
+        self.backgroundView.layer.backgroundColor = [UIColor colorWithRed:229.0f/255.0f green:104.0f/255.0f blue:92.0f/255.0f alpha:1.0].CGColor;
+        self.backgroundView.layer.cornerRadius = 20.0;
+        self.backgroundView.translatesAutoresizingMaskIntoConstraints = NO;
+        [self addSubview:self.backgroundView];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.backgroundView
+                                                         attribute:NSLayoutAttributeCenterX
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeCenterX
+                                                        multiplier:1.0f
+                                                          constant:0.0f]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.backgroundView
+                                                         attribute:NSLayoutAttributeCenterY
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeCenterY
+                                                        multiplier:1.0f
+                                                          constant:0.0f]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.backgroundView
+                                                         attribute:NSLayoutAttributeHeight
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:NSLayoutAttributeNotAnAttribute
+                                                        multiplier:1.0f
+                                                          constant:40.0f]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.backgroundView
+                                                         attribute:NSLayoutAttributeWidth
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:NSLayoutAttributeNotAnAttribute
+                                                        multiplier:1.0f
+                                                          constant:40.0f]];
+        
+        
         self.iconView = [[UIImageView alloc] initWithFrame:CGRectZero];
         self.iconView.tintColor = [UIColor whiteColor];
         self.iconView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -121,8 +177,7 @@
 - (void)setItem:(ISUActionMenuItem *)item {
     
     _item = item;
-    
-    self.iconView.image = item.image;
+    self.iconView.image = [item.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     self.textLabel.text = item.text;
 }
 

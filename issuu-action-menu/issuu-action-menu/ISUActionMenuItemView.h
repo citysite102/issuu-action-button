@@ -16,7 +16,8 @@
 @property (nonatomic, readwrite) BOOL showText;
 
 //Custom
-@property (nonatomic, strong) UIImageView *backgroundView;
+@property (nonatomic, strong) UIImageView *backgroundImageView;
+@property (nonatomic, strong) UIView *backgroundView;
 @property (nonatomic, strong) UIImageView *iconView;
 @property (nonatomic, strong) UIView  *textContainer;
 @property (nonatomic, strong) UILabel *textLabel;
