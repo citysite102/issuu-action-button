@@ -14,6 +14,7 @@
 @property (nonatomic, strong) UIView *touchPointView;
 @property (nonatomic, strong) NSArray<ISUActionMenuItemView *> *itemViews;
 @property (nonatomic, readwrite) NSInteger lastFocusedCellIndex;
+@property (nonatomic, strong) CAShapeLayer *indicatorPath;
 @property (nonatomic, readwrite) BOOL didDismiss;
 
 @end
@@ -113,6 +114,20 @@
     self.itemViews = itemViews;
 }
 
+
+- (void)setShowIndicatorPath:(BOOL)showIndicatorPath {
+    _indicatorPath.hidden = !showIndicatorPath;
+}
+
+- (void)setShowProgress:(BOOL)showProgress {
+    for (ISUActionMenuItemView *itemView in self.itemViews) {
+        itemView.indicatorPath.hidden = !showProgress;
+    }
+}
+
+- (void)setIndicatorPathColor:(UIColor *)indicatorPathColor {
+    _indicatorPath.strokeColor = indicatorPathColor.CGColor;
+}
 
 #pragma mark - Events
 

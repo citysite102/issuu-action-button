@@ -24,25 +24,6 @@
     if (self) {
         
         // Background
-//        self.backgroundView = [[UIImageView alloc] initWithFrame:CGRectZero];
-//        self.backgroundView.image = [UIImage imageNamed:@"button_action_menu"];
-//        self.backgroundView.translatesAutoresizingMaskIntoConstraints = NO;
-//        [self addSubview:self.backgroundView];
-//        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.backgroundView
-//                                                         attribute:NSLayoutAttributeCenterX
-//                                                         relatedBy:NSLayoutRelationEqual
-//                                                            toItem:self
-//                                                         attribute:NSLayoutAttributeCenterX
-//                                                        multiplier:1.0f
-//                                                          constant:0.0f]];
-//        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.backgroundView
-//                                                         attribute:NSLayoutAttributeCenterY
-//                                                         relatedBy:NSLayoutRelationEqual
-//                                                            toItem:self
-//                                                         attribute:NSLayoutAttributeCenterY
-//                                                        multiplier:1.0f
-//                                                          constant:0.0f]];
-        
         self.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
         self.backgroundView.layer.backgroundColor = [UIColor colorWithRed:229.0f/255.0f green:104.0f/255.0f blue:92.0f/255.0f alpha:1.0].CGColor;
         self.backgroundView.layer.cornerRadius = 20.0;
@@ -79,6 +60,7 @@
                                                           constant:40.0f]];
         
         
+        // Icon
         self.iconView = [[UIImageView alloc] initWithFrame:CGRectZero];
         self.iconView.tintColor = [UIColor whiteColor];
         self.iconView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -158,6 +140,7 @@
                                                                                    metrics:nil
                                                                                      views:@{@"ViewA":self.textLabel}]];
         
+        // Indicator Path
         self.indicatorPath = [[CAShapeLayer alloc] init];
         self.indicatorPath.path        = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(-20, -20, 40, 40)].CGPath;
         self.indicatorPath.strokeColor = [UIColor whiteColor].CGColor;
@@ -211,9 +194,30 @@
 }
 
 
+#pragma mark - Exposed Parameter
 
-//- (void)setBackgroundView:(UIImageView *)backgroundView {
-//    _backgroundView = backgroundView;
-//}
+- (void)setBackgroundColor:(UIColor *)backgroundColor {
+    _backgroundView.layer.backgroundColor = backgroundColor.CGColor;
+}
+
+- (void)setIconColor:(UIColor *)iconColor {
+    _iconView.tintColor = iconColor;
+}
+
+- (void)setTextContainerColor:(UIColor *)textContainerColor {
+    _textContainer.backgroundColor = textContainerColor;
+}
+
+- (void)setTextLabelColor:(UIColor *)textLabelColor {
+    _textLabel.textColor = textLabelColor;
+}
+
+- (void)setIndicatorPathColor:(UIColor *)indicatorPathColor {
+    _indicatorPath.strokeColor = indicatorPathColor.CGColor;
+}
+
+- (void)setIndicatorPathWidth:(double)indicatorPathWidth {
+    _indicatorPath.lineWidth = indicatorPathWidth;
+}
 
 @end
