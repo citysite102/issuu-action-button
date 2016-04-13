@@ -18,7 +18,7 @@
 
 - (void)actionMenu:(ISUActionMenuView *)actionMenuView
               item:(ISUActionMenuItem *)item
-          progress:(CGFloat)progress;
+   progressChanged:(CGFloat)progress;
 
 @end
 

@@ -19,16 +19,20 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @class ISUActionMenuItem;
+@class ISUActionMenuView;
 
 @interface ISUActionMenuGestureRecognizer : UILongPressGestureRecognizer
 
+@property (nonatomic, readwrite) ISUActionMenuView *menuView;
 @property (nonatomic, readwrite) NSArray<ISUActionMenuItem *> *items;
 @property (nonatomic, readonly) ISUActionMenuItem *selectedItem;
 @property (nonatomic, readonly) CGPoint startPoint;
 @property (nonatomic, weak) UIView *targetView;
-@property (nonatomic, strong) id userInfo;
 
 - (CGPoint)startLocationInView:(UIView *)view;
+- (instancetype)initWithTarget:(id)target
+                        action:(SEL)action
+         initializationHandler:(ISUActionMenuView *(^)())initializationHandler;
 
 @end
 

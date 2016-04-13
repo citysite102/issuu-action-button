@@ -332,6 +332,7 @@
     // Calculate the startDegree for the item
     CGFloat startDegree = -((CGFloat)self.itemViews.count - 1) * self.intersectionDegree * 0.5;
     
+    // Calculate item view status
     NSInteger itemViewIndex = round((intersectionDegree - startDegree) / self.intersectionDegree);
     CGFloat itemViewDegree = (centerDegree + startDegree) + (itemViewIndex * self.intersectionDegree);
     CGFloat itemViewangle  = itemViewDegree / 180. * M_PI;
@@ -340,17 +341,17 @@
     CGFloat progress = 1.0 -(hypot(itemViewCenter.x - touchPoint.x, itemViewCenter.y - touchPoint.y) / self.radius);
     progress = MIN(1.0, progress *(1.0 / self.minimumAcceptProgress));
     
-//    if ([self.delegate respondsToSelector:@selector(actionMenu:item:progressChanged:)]) {
-//        
-//        TCActionMenuItem *item = nil;
-//        if (cellIndex >= 0 && cellIndex < self.cells.count) {
-//            item = self.items[cellIndex];
-//        }
-//        [self.delegate actionMenu:self item:item progressChanged:item ? progress : 0];
-//    }
-//    if (self.didDismiss) {
-//        return;
-//    }
+    if ([self.delegate respondsToSelector:@selector(actionMenu:item:progressChanged:)]) {
+        
+        ISUActionMenuItem *item = nil;
+        if (itemViewIndex >= 0 && itemViewIndex < self.itemViews.count) {
+            item = self.items[itemViewIndex];
+        }
+        [self.delegate actionMenu:self item:item progressChanged:item ? progress : 0];
+    }
+    if (self.didDismiss) {
+        return;
+    }
     
     // Text
     if (itemViewIndex != self.lastFocusedCellIndex &&

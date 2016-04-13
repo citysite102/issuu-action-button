@@ -25,7 +25,12 @@
     self.view.translatesAutoresizingMaskIntoConstraints = NO;
     self.longPressGesture = [[ISUActionMenuGestureRecognizer alloc]
                              initWithTarget:self
-                             action:@selector(handleActionMenuGesture:)];
+                             action:@selector(handleActionMenuGesture:)
+                             initializationHandler:^ISUActionMenuView * _Nonnull{
+                                 ISUActionMenuView *actionMenuView = [[ISUActionMenuView alloc] init];
+                                 return actionMenuView;
+                             }];
+    
     self.longPressGesture.items = @[[ISUActionMenuItem itemWithImage:[UIImage imageNamed:@"icon_move"] text:@"Move"],
                                     [ISUActionMenuItem itemWithImage:[UIImage imageNamed:@"icon_duplicate"] text:@"Duplicate"],
                                     [ISUActionMenuItem itemWithImage:[UIImage imageNamed:@"icon_rotation"] text:@"Rotation"]];
@@ -37,23 +42,24 @@
 
 - (void)handleActionMenuGesture:(ISUActionMenuGestureRecognizer *)sender {
     
-//    UIGestureRecognizerState state = UIGestureRecognizerStateEnded;
-//    if (sender.selectedItem) {
-//        if (![sender.userInfo boolValue]) {
-//            state = UIGestureRecognizerStateBegan;
-//            sender.userInfo = @YES;
-//        } else {
-//            state = UIGestureRecognizerStateChanged;
-//        }
-//    } else if (sender.state == UIGestureRecognizerStateEnded) {
-//        sender.userInfo = @NO;
-//    } else {
-//        if (sender.state == UIGestureRecognizerStateBegan) {
-//            CGPoint startPoint = [sender startLocationInView:self.view];
-//            NSLog(@"%@", NSStringFromCGPoint(startPoint));
-//        }
-//        return;
-//    }
+    if (sender.selectedItem) {
+        switch (sender.selectedItem.index) {
+            case 0: {
+                NSLog(@"0");
+                break;
+            }
+            case 1: {
+                NSLog(@"1");
+                break;
+            }
+            case 2: {
+                NSLog(@"2");
+                break;
+            }
+            default:
+                break;
+        }
+    }
 }
 
 

@@ -8,11 +8,10 @@
 
 #import "ISUActionMenuItem.h"
 
-
-
 @implementation ISUActionMenuItem
 
-+ (instancetype)itemWithImage:(UIImage *)image text:(NSString *)text {
++ (instancetype)itemWithImage:(UIImage *)image
+                         text:(NSString *)text {
     
     ISUActionMenuItem *item = [[ISUActionMenuItem alloc] init];
     item.image = image;

@@ -13,7 +13,9 @@
 
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) NSString *text;
+@property (nonatomic, assign) NSInteger index;
 
-+ (instancetype)itemWithImage:(UIImage *)image text:(NSString *)text;
++ (instancetype)itemWithImage:(UIImage *)image
+                         text:(NSString *)text;
 
 @end
