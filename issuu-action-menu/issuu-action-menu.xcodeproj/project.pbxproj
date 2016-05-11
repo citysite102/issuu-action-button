@@ -20,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		779DEAD61CC3E2FF00DFB4DC /* ISUActionMenuSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISUActionMenuSupport.h; sourceTree = "<group>"; };
 		77C5919A1CBB407C00A7F4AD /* issuu-action-menu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "issuu-action-menu.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		77C5919E1CBB407C00A7F4AD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		77C591A01CBB407C00A7F4AD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -75,6 +76,7 @@
 				77C591A31CBB407C00A7F4AD /* ViewController.h */,
 				77C591A41CBB407C00A7F4AD /* ViewController.m */,
 				77C591B41CBB41CA00A7F4AD /* ISUActionMenu.h */,
+				779DEAD61CC3E2FF00DFB4DC /* ISUActionMenuSupport.h */,
 				77C591B51CBB41CA00A7F4AD /* ISUActionMenu.m */,
 				77C591B71CBB42AE00A7F4AD /* ISUActionMenuItem.h */,
 				77C591B81CBB42AE00A7F4AD /* ISUActionMenuItem.m */,
@@ -326,6 +328,7 @@
 				77C591B31CBB407C00A7F4AD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
